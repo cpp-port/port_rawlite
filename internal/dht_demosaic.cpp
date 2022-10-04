@@ -604,19 +604,19 @@ void DHT::make_gline(int i) {
 	for (int j = js; j < iwidth; j += 2) {
 		int x = j + nr_leftmargin;
 		int y = i + nr_topmargin;
-		int dx, dy, dx2, dy2;
+		int Δx, Δy, dx2, dy2;
 		float h1, h2;
 		if (ndir[nr_offset(y, x)] & VER) {
-			dx = dx2 = 0;
-			dy = -1;
+			Δx = dx2 = 0;
+			Δy = -1;
 			dy2 = 1;
 			h1 = 2 * nraw[nr_offset(y - 1, x)][1]
 					/ (nraw[nr_offset(y - 2, x)][kc] + nraw[nr_offset(y, x)][kc]);
 			h2 = 2 * nraw[nr_offset(y + 1, x)][1]
 					/ (nraw[nr_offset(y + 2, x)][kc] + nraw[nr_offset(y, x)][kc]);
 		} else {
-			dy = dy2 = 0;
-			dx = 1;
+			Δy = dy2 = 0;
+			Δx = 1;
 			dx2 = -1;
 			h1 = 2 * nraw[nr_offset(y, x + 1)][1]
 					/ (nraw[nr_offset(y, x + 2)][kc] + nraw[nr_offset(y, x)][kc]);
@@ -624,7 +624,7 @@ void DHT::make_gline(int i) {
 					/ (nraw[nr_offset(y, x - 2)][kc] + nraw[nr_offset(y, x)][kc]);
 		}
 		float b1 = 1
-				/ calc_dist(nraw[nr_offset(y, x)][kc], nraw[nr_offset(y + dy * 2, x + dx * 2)][kc]);
+				/ calc_dist(nraw[nr_offset(y, x)][kc], nraw[nr_offset(y + Δy * 2, x + Δx * 2)][kc]);
 		float b2 = 1
 				/ calc_dist(nraw[nr_offset(y, x)][kc],
 						nraw[nr_offset(y + dy2 * 2, x + dx2 * 2)][kc]);
@@ -632,8 +632,8 @@ void DHT::make_gline(int i) {
 		b2 *= b2;
 		float eg = nraw[nr_offset(y, x)][kc] * (b1 * h1 + b2 * h2) / (b1 + b2);
 		float min, max;
-		min = min(nraw[nr_offset(y + dy, x + dx)][1], nraw[nr_offset(y + dy2, x + dx2)][1]);
-		max = max(nraw[nr_offset(y + dy, x + dx)][1], nraw[nr_offset(y + dy2, x + dx2)][1]);
+		min = min(nraw[nr_offset(y + Δy, x + Δx)][1], nraw[nr_offset(y + dy2, x + dx2)][1]);
+		max = max(nraw[nr_offset(y + Δy, x + Δx)][1], nraw[nr_offset(y + dy2, x + dx2)][1]);
 		min /= 1.2;
 		max *= 1.2;
 		if (eg < min)
@@ -698,31 +698,31 @@ void DHT::make_rbdiag(int i) {
 	for (int j = js; j < iwidth; j += 2) {
 		int x = j + nr_leftmargin;
 		int y = i + nr_topmargin;
-		int dx, dy, dx2, dy2;
+		int Δx, Δy, dx2, dy2;
 		if (ndir[nr_offset(y, x)] & LURD) {
-			dx = -1;
+			Δx = -1;
 			dx2 = 1;
-			dy = -1;
+			Δy = -1;
 			dy2 = 1;
 		} else {
-			dx = -1;
+			Δx = -1;
 			dx2 = 1;
-			dy = 1;
+			Δy = 1;
 			dy2 = -1;
 		}
-		float g1 = 1 / calc_dist(nraw[nr_offset(y, x)][1], nraw[nr_offset(y + dy, x + dx)][1]);
+		float g1 = 1 / calc_dist(nraw[nr_offset(y, x)][1], nraw[nr_offset(y + Δy, x + Δx)][1]);
 		float g2 = 1 / calc_dist(nraw[nr_offset(y, x)][1], nraw[nr_offset(y + dy2, x + dx2)][1]);
 		g1 *= g1 * g1;
 		g2 *= g2 * g2;
 
 		float eg;
 		eg = nraw[nr_offset(y, x)][1]
-				* (g1 * nraw[nr_offset(y + dy, x + dx)][cl] / nraw[nr_offset(y + dy, x + dx)][1]
+				* (g1 * nraw[nr_offset(y + Δy, x + Δx)][cl] / nraw[nr_offset(y + Δy, x + Δx)][1]
 						+ g2 * nraw[nr_offset(y + dy2, x + dx2)][cl]
 								/ nraw[nr_offset(y + dy2, x + dx2)][1]) / (g1 + g2);
 		float min, max;
-		min = min(nraw[nr_offset(y + dy, x + dx)][cl], nraw[nr_offset(y + dy2, x + dx2)][cl]);
-		max = max(nraw[nr_offset(y + dy, x + dx)][cl], nraw[nr_offset(y + dy2, x + dx2)][cl]);
+		min = min(nraw[nr_offset(y + Δy, x + Δx)][cl], nraw[nr_offset(y + dy2, x + dx2)][cl]);
+		max = max(nraw[nr_offset(y + Δy, x + Δx)][cl], nraw[nr_offset(y + dy2, x + dx2)][cl]);
 		min /= 1.2;
 		max *= 1.2;
 		if (eg < min)
@@ -753,36 +753,36 @@ void DHT::make_rbhv(int i) {
 		 * поскольку сверху-снизу и справа-слева уже есть все необходимые красные и синие,
 		 * то можно выбрать наилучшее направление исходя из информации по обоим цветам.
 		 */
-		int dx, dy, dx2, dy2;
+		int Δx, Δy, dx2, dy2;
 		float h1, h2;
 		if (ndir[nr_offset(y, x)] & VER) {
-			dx = dx2 = 0;
-			dy = -1;
+			Δx = dx2 = 0;
+			Δy = -1;
 			dy2 = 1;
 		} else {
-			dy = dy2 = 0;
-			dx = 1;
+			Δy = dy2 = 0;
+			Δx = 1;
 			dx2 = -1;
 		}
-		float g1 = 1 / calc_dist(nraw[nr_offset(y, x)][1], nraw[nr_offset(y + dy, x + dx)][1]);
+		float g1 = 1 / calc_dist(nraw[nr_offset(y, x)][1], nraw[nr_offset(y + Δy, x + Δx)][1]);
 		float g2 = 1 / calc_dist(nraw[nr_offset(y, x)][1], nraw[nr_offset(y + dy2, x + dx2)][1]);
 		g1 *= g1;
 		g2 *= g2;
 		float eg_r, eg_b;
 		eg_r = nraw[nr_offset(y, x)][1]
-				* (g1 * nraw[nr_offset(y + dy, x + dx)][0] / nraw[nr_offset(y + dy, x + dx)][1]
+				* (g1 * nraw[nr_offset(y + Δy, x + Δx)][0] / nraw[nr_offset(y + Δy, x + Δx)][1]
 						+ g2 * nraw[nr_offset(y + dy2, x + dx2)][0]
 								/ nraw[nr_offset(y + dy2, x + dx2)][1]) / (g1 + g2);
 		eg_b = nraw[nr_offset(y, x)][1]
-				* (g1 * nraw[nr_offset(y + dy, x + dx)][2] / nraw[nr_offset(y + dy, x + dx)][1]
+				* (g1 * nraw[nr_offset(y + Δy, x + Δx)][2] / nraw[nr_offset(y + Δy, x + Δx)][1]
 						+ g2 * nraw[nr_offset(y + dy2, x + dx2)][2]
 								/ nraw[nr_offset(y + dy2, x + dx2)][1]) / (g1 + g2);
 		float min_r, max_r;
-		min_r = min(nraw[nr_offset(y + dy, x + dx)][0], nraw[nr_offset(y + dy2, x + dx2)][0]);
-		max_r = max(nraw[nr_offset(y + dy, x + dx)][0], nraw[nr_offset(y + dy2, x + dx2)][0]);
+		min_r = min(nraw[nr_offset(y + Δy, x + Δx)][0], nraw[nr_offset(y + dy2, x + dx2)][0]);
+		max_r = max(nraw[nr_offset(y + Δy, x + Δx)][0], nraw[nr_offset(y + dy2, x + dx2)][0]);
 		float min_b, max_b;
-		min_b = min(nraw[nr_offset(y + dy, x + dx)][2], nraw[nr_offset(y + dy2, x + dx2)][2]);
-		max_b = max(nraw[nr_offset(y + dy, x + dx)][2], nraw[nr_offset(y + dy2, x + dx2)][2]);
+		min_b = min(nraw[nr_offset(y + Δy, x + Δx)][2], nraw[nr_offset(y + dy2, x + dx2)][2]);
+		max_b = max(nraw[nr_offset(y + Δy, x + Δx)][2], nraw[nr_offset(y + dy2, x + dx2)][2]);
 		min_r /= 1.2;
 		max_r *= 1.2;
 		min_b /= 1.2;

@@ -10436,7 +10436,7 @@ void CLASS parse_smal (int offset, int fsize)
   raw_height = height = get2();
   raw_width  = width  = get2();
   strcpy (make, "SMaL");
-  sprintf (model, "v%d %dx%d", ver, width, height);
+  sprintf (model, "v%d %Δx%d", ver, width, height);
   if (ver == 6) load_raw = &CLASS smal_v6_load_raw;
   if (ver == 9) load_raw = &CLASS smal_v9_load_raw;
 }
@@ -13085,7 +13085,7 @@ bw:   colors = 1;
       return;
     }
   if (!model[0])
-    sprintf (model, "%dx%d", width, height);
+    sprintf (model, "%Δx%d", width, height);
   if (filters == UINT_MAX) filters = 0x94949494;
   if (thumb_offset && !thumb_height) {
     fseek (ifp, thumb_offset, SEEK_SET);

@@ -125,7 +125,7 @@ void CLASS subtract (const char *fname)
     if (isdigit(c)) number = 1;
     if (number) {
       if (isdigit(c)) dim[nd] = dim[nd]*10 + c -'0';
-      else if (isspace(c)) {
+      else if (character_isspace(c)) {
 	number = 0;  nd++;
       } else error = 1;
     }

@@ -1,4 +1,4 @@
-/* Library for accessing X3F Files 
+﻿/* Library for accessing X3F Files 
 ----------------------------------------------------------------
 BSD-style License
 ----------------------------------------------------------------
@@ -343,7 +343,7 @@ typedef struct x3f_header_s {
 } x3f_header_t;
 
 typedef struct x3f_info_s {
-  char *error;
+  const char *error;
   struct {
 	  LibRaw_abstract_datastream *file;                 /* Use if more data is needed */
   } input, output;

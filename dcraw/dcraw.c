@@ -9276,7 +9276,7 @@ void CLASS parse_makernote (int base, int uptag)
       {
         unsigned char cc;
         fread(&cc,1,1,ifp);
-        iso_speed = int(100.0 * powf64(2.0f,float(cc)/12.0-5.0));
+        iso_speed = (int)(100.0 * powf64(2.0f,((float)(cc))/12.0-5.0));
       }
     if (tag == 4 && len > 26 && len < 35) {
       if ((i=(get4(),get2())) != 0x7fff && (!iso_speed || iso_speed == 65535))
@@ -10771,7 +10771,7 @@ void CLASS apply_tiff()
 	max_samp = tiff_ifd[i].samples;
     if (max_samp > 3) max_samp = 3;
     if ((tiff_ifd[i].comp != 6 || tiff_ifd[i].samples != 3) &&
-        unsigned(tiff_ifd[i].t_width | tiff_ifd[i].t_height) < 0x10000 &&
+    (unsigned)(tiff_ifd[i].t_width | tiff_ifd[i].t_height) < 0x10000 &&
         (unsigned)tiff_ifd[i].bps < 33 && (unsigned)tiff_ifd[i].samples < 13 &&
 	tiff_ifd[i].t_width*tiff_ifd[i].t_height > raw_width*raw_height) {
       raw_width     = tiff_ifd[i].t_width;
@@ -10889,7 +10889,7 @@ void CLASS apply_tiff()
   for (i=0; i < tiff_nifds; i++)
     if (i != raw && tiff_ifd[i].samples == max_samp &&
         tiff_ifd[i].bps>0 && tiff_ifd[i].bps < 33 &&
-        unsigned(tiff_ifd[i].t_width | tiff_ifd[i].t_height) < 0x10000 &&
+            (unsigned)(tiff_ifd[i].t_width | tiff_ifd[i].t_height) < 0x10000 &&
 	tiff_ifd[i].t_width * tiff_ifd[i].t_height / (SQR(tiff_ifd[i].bps)+1) >
 	      thumb_width *       thumb_height / (SQR(thumb_misc)+1)
 	&& tiff_ifd[i].comp != 34892) {

@@ -29,14 +29,15 @@ git commit -a -m "v.102"
 git push
 
  */
-/*@out DEFINES
-#ifndef USE_JPEG
-#define NO_JPEG
-#endif
-#ifndef USE_JASPER
-#define NO_JASPER
-#endif
-@end DEFINES */
+
+// @out DEFINES
+// #ifndef USE_JPEG
+// #define NO_JPEG
+// #endif
+// #ifndef USE_JASPER
+// #define NO_JASPER
+// #endif
+// @end DEFINES
 
 #define NO_LCMS
 #define DCRAW_VERBOSE
@@ -72,6 +73,9 @@ git push
 #include <io.h>
 #endif
 #ifdef WIN32
+#undef fgetc
+#define fseeko fseek
+#define ftello ftell
 #include <sys/utime.h>
 #include <winsock2.h>
 #pragma comment(lib, "ws2_32.lib")
@@ -2010,6 +2014,7 @@ int CLASS phase_one_correct()
 	  return LIBRAW_CANCELLED_BY_CALLBACK;
   }
 #endif
+  return 0;
 }
 
 void CLASS phase_one_load_raw()

@@ -14,3 +14,5 @@
 #pragma warning( disable : 5033)
 #pragma warning( disable : 4715)
 
+#define NOMINMAX
+

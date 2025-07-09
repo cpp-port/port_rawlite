@@ -3,7 +3,7 @@ project(rawlite CXX)
 
 
 if (MSVC)
-    set(CMAKE_DEBUG_POSTFIX "d")
+    #set(CMAKE_DEBUG_POSTFIX "d")
     add_definitions(-D_CRT_SECURE_NO_DEPRECATE)
     add_definitions(-D_CRT_NONSTDC_NO_DEPRECATE)
     include_directories(${CMAKE_CURRENT_SOURCE_DIR})
@@ -33,8 +33,14 @@ list(APPEND library_source
 add_library(${PROJECT_NAME} SHARED ${library_source})
 
 
+
 target_compile_definitions(${PROJECT_NAME} PRIVATE NO_JASPER LIBRAW_NOTHREADS)
 
+if(MSVC)
+    target_compile_definitions(${PROJECT_NAME} PRIVATE LIBRAW_BUILDLIB)
+endif()
+
+target_link_libraries(${PROJECT_NAME} PRIVATE jpeg)
 
 target_include_directories(${PROJECT_NAME} PRIVATE ${CMAKE_CURRENT_SOURCE_DIR})
 target_include_directories(${PROJECT_NAME} PRIVATE ${CMAKE_CURRENT_SOURCE_DIR}/..)

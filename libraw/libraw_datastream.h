@@ -87,7 +87,7 @@ protected:
 };
 
 #ifdef WIN32
-template class DllDef std::unique_ptr<std::streambuf>;
+template class std::unique_ptr<std::streambuf>;
 #endif
 
 class DllDef  LibRaw_file_datastream: public LibRaw_abstract_datastream

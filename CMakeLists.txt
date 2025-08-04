@@ -32,7 +32,7 @@ list(APPEND library_source
 
 add_library(${PROJECT_NAME} SHARED ${library_source})
 
-
+target_compile_options(${PROJECT_NAME} PRIVATE -Wno-c++11-narrowing)
 
 target_compile_definitions(${PROJECT_NAME} PRIVATE NO_JASPER LIBRAW_NOTHREADS)
 

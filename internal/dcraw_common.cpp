@@ -86,7 +86,7 @@ ushort CLASS sget2 (uchar *s)
   else				/* "MM" means big-endian */
     return s[0] << 8 | s[1];
 }
-
+float powf_lim_64(float a, float b);
 // DNG was written by:
 #define CameraDNG	1
 #define AdobeDNG	2
@@ -5552,7 +5552,7 @@ static float powf_lim(float a, float b, float limup)
 {
   return (b>limup || b < -limup)?0.f:powf(a,b);
 }
-static float powf64(float a, float b)
+float powf_lim_64(float a, float b)
 {
   return powf_lim(a,b,64.f);
 }
@@ -6388,11 +6388,11 @@ void CLASS process_Sony_0x9050 (uchar * buf, unsigned id)
     {
       if (buf[0])
         imgdata.lens.makernotes.MaxAp =
-          my_roundf(powf64(2.0f, ((float)SonySubstitution[buf[0]] / 8.0 - 1.06f) / 2.0f)*10.0f) / 10.0f;
+          my_roundf(powf_lim_64(2.0f, ((float)SonySubstitution[buf[0]] / 8.0 - 1.06f) / 2.0f)*10.0f) / 10.0f;
 
       if (buf[1])
         imgdata.lens.makernotes.MinAp =
-          my_roundf(powf64(2.0f, ((float)SonySubstitution[buf[1]] / 8.0 - 1.06f) / 2.0f)*10.0f) / 10.0f;
+          my_roundf(powf_lim_64(2.0f, ((float)SonySubstitution[buf[1]] / 8.0 - 1.06f) / 2.0f)*10.0f) / 10.0f;
     }
 
   if (imgdata.lens.makernotes.CameraMount != LIBRAW_MOUNT_FixedLens)

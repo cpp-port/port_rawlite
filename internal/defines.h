@@ -77,7 +77,7 @@ typedef uint64_t UINT64;
 #include <jasper/jasper.h>	/* Decode Red camera movies */
 #endif
 #ifndef NO_JPEG
-#include <jpeglib.h>		/* Decode compressed Kodak DC120 photos */
+#include "port_jpeg/jpeglib.h"		/* Decode compressed Kodak DC120 photos */
 #endif				/* and Adobe Lossy DNGs */
 #ifndef NO_LCMS
 #ifdef USE_LCMS

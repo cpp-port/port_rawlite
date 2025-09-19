@@ -42,7 +42,7 @@
 #endif
 #endif
 #ifdef USE_JPEG
-#include <jpeglib.h>
+#include "port_jpeg/jpeglib.h"
 #else
 #define NO_JPEG
 #endif

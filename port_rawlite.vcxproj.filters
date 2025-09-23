@@ -78,7 +78,7 @@
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
-    <None Include="rawlite.def">
+    <None Include="port_rawlite.def">
       <Filter>Source Files</Filter>
     </None>
   </ItemGroup>

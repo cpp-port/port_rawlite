@@ -43,9 +43,9 @@
     </ProjectConfiguration>
   </ItemGroup>
   <PropertyGroup Label="Globals">
-    <ProjectName>rawlite</ProjectName>
+    <ProjectName>port_rawlite</ProjectName>
     <ProjectGuid>{07F662C1-1323-42AB-B6AF-FBFD34A7437A}</ProjectGuid>
-    <RootNamespace>rawlite</RootNamespace>
+    <RootNamespace>port_rawlite</RootNamespace>
     <Keyword>Win32Proj</Keyword>
     <WindowsTargetPlatformVersion>10.0</WindowsTargetPlatformVersion>
   </PropertyGroup>
@@ -198,7 +198,7 @@
     </PostBuildEvent>
     <Link>
       <AdditionalLibraryDirectories>$(OutDir);$(__operating_system)third-universal_windows/thirdparty/library/$(PlatformName)/$(Configuration);%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
-      <ModuleDefinitionFile>rawlite.def</ModuleDefinitionFile>
+      <ModuleDefinitionFile>$(ProjectName).def</ModuleDefinitionFile>
       <ImportLibrary>$(RootParentDirOperatingSystem)storage-windows\$(PlatformName)\$(Configuration)\third\library\$(TargetName).lib</ImportLibrary>
     </Link>
     <Xdcmake>
@@ -315,7 +315,7 @@
     </PostBuildEvent>
     <Link>
       <AdditionalLibraryDirectories>$(OutDir);$(__operating_system)third-universal_windows/thirdparty/library/$(PlatformName)/$(Configuration);%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
-      <ModuleDefinitionFile>rawlite.def</ModuleDefinitionFile>
+      <ModuleDefinitionFile>$(ProjectName).def</ModuleDefinitionFile>
       <ImportLibrary>$(RootParentDirOperatingSystem)storage-windows\$(PlatformName)\$(Configuration)\third\library\$(TargetName).lib</ImportLibrary>
     </Link>
     <Xdcmake>
@@ -429,7 +429,7 @@
     <Lib />
     <Link>
       <AdditionalLibraryDirectories>$(OutDir);$(__operating_system)third-universal_windows/thirdparty/library/$(PlatformName)/$(Configuration);%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
-      <ModuleDefinitionFile>rawlite.def</ModuleDefinitionFile>
+      <ModuleDefinitionFile>$(ProjectName).def</ModuleDefinitionFile>
       <ImportLibrary>$(RootParentDirOperatingSystem)storage-windows\$(PlatformName)\$(Configuration)\third\library\$(TargetName).lib</ImportLibrary>
     </Link>
     <Lib>
@@ -504,7 +504,7 @@
     <Lib />
     <Link>
       <AdditionalLibraryDirectories>$(OutDir);$(__operating_system)third-universal_windows/thirdparty/library/$(PlatformName)/$(Configuration);%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
-      <ModuleDefinitionFile>rawlite.def</ModuleDefinitionFile>
+      <ModuleDefinitionFile>$(ProjectName).def</ModuleDefinitionFile>
       <ImportLibrary>$(RootParentDirOperatingSystem)storage-windows\$(PlatformName)\$(Configuration)\third\library\$(TargetName).lib</ImportLibrary>
     </Link>
     <Lib />
@@ -574,7 +574,7 @@
     <ClInclude Include="libraw_private.h" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="rawlite.def" />
+    <None Include="port_rawlite.def" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

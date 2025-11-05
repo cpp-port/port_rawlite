@@ -30,10 +30,10 @@ it under the terms of the one of three licenses as you choose:
 
 #define CLASS LibRaw::
 
-#include "libraw/libraw_types.h"
+#include "port_rawlite/libraw_types.h"
 #define LIBRAW_LIBRARY_BUILD
 #define LIBRAW_IO_REDEFINED
-#include "libraw/libraw.h"
+#include "port_rawlite/libraw.h"
 #include "internal/defines.h"
 #define SRC_USES_SHRINK
 #define SRC_USES_BLACK

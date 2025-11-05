@@ -37,11 +37,11 @@ it under the terms of the one of three licenses as you choose:
 #include <stdlib.h>
 
 
-#include "libraw_datastream.h"
-#include "libraw_types.h"
-#include "libraw_const.h"
-#include "libraw_internal.h"
-#include "libraw_alloc.h"
+#include "port_rawlite/libraw_datastream.h"
+#include "port_rawlite/libraw_types.h"
+#include "port_rawlite/libraw_const.h"
+#include "port_rawlite/libraw_internal.h"
+#include "port_rawlite/libraw_alloc.h"
 
 #ifdef __cplusplus
 extern "C" 

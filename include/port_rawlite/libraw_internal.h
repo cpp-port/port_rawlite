@@ -40,8 +40,8 @@ it under the terms of the one of three licenses as you choose:
 
 #ifdef __cplusplus
 
-#include "libraw_datastream.h"
-#include "libraw_types.h"
+#include "port_rawlite/libraw_datastream.h"
+#include "port_rawlite/libraw_types.h"
 
 class LibRaw_TLS
 {

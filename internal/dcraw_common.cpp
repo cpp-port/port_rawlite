@@ -27,10 +27,10 @@ it under the terms of the one of three licenses as you choose:
 
 #include <math.h>
 #define CLASS LibRaw::
-#include "libraw/libraw_types.h"
+#include "port_rawlite/libraw_types.h"
 #define LIBRAW_LIBRARY_BUILD
 #define LIBRAW_IO_REDEFINED
-#include "libraw/libraw.h"
+#include "port_rawlite/libraw.h"
 #include "internal/defines.h"
 #include "internal/var_defines.h"
 int CLASS fcol (int row, int col)

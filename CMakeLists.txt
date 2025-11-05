@@ -36,11 +36,17 @@ target_compile_options(${PROJECT_NAME} PRIVATE -Wno-c++11-narrowing)
 
 target_compile_definitions(${PROJECT_NAME} PRIVATE NO_JASPER LIBRAW_NOTHREADS)
 
+if(${USE_SYSTEM_JPEG})
+target_compile_definitions(${PROJECT_NAME} PRIVATE RAWLITE_USE_SYSTEM_JPEG=1)
+else()
+target_compile_definitions(${PROJECT_NAME} PRIVATE RAWLITE_USE_SYSTEM_JPEG=0)
+endif()
+
 if(MSVC)
     target_compile_definitions(${PROJECT_NAME} PRIVATE LIBRAW_BUILDLIB)
 endif()
 
-if(${HAS_SYSTEM_JPEG})
+if(${USE_SYSTEM_JPEG})
     set(jpeg_library jpeg)
 else()
     set(jpeg_library port_jpeg)

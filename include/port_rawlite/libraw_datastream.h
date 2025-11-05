@@ -32,8 +32,8 @@ it under the terms of the one of three licenses as you choose:
 
 #else /* __cplusplus */
 
-#include "libraw_const.h"
-#include "libraw_types.h"
+#include "port_rawlite/libraw_const.h"
+#include "port_rawlite/libraw_types.h"
 #include <fstream>
 #include <memory>
 

@@ -66,8 +66,8 @@ extern "C" {
 #define NO_LCMS
 #endif
 
-#include "libraw_const.h"
-#include "libraw_version.h"
+#include "port_rawlite/libraw_const.h"
+#include "port_rawlite/libraw_version.h"
 
 #ifdef WIN32
 typedef __int64 INT64;

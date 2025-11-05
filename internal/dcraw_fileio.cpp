@@ -29,9 +29,9 @@ it under the terms of the one of three licenses as you choose:
 #line 4777 "dcraw/dcraw.c"
 #include <math.h>
 #define CLASS LibRaw::
-#include "libraw/libraw_types.h"
+#include "port_rawlite/libraw_types.h"
 #define LIBRAW_LIBRARY_BUILD
-#include "libraw/libraw.h"
+#include "port_rawlite/libraw.h"
 #include "internal/defines.h"
 #include "internal/var_defines.h"
 #line 4788 "dcraw/dcraw.c"

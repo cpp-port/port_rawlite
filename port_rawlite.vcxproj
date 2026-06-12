@@ -308,6 +308,9 @@
     <Lib>
       <SubSystem>Windows</SubSystem>
     </Lib>
+    <PreBuildEvent>
+      <Command> </Command>
+    </PreBuildEvent>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='ASanStaticDebug|Win32'">
     <ClCompile>
@@ -458,6 +461,9 @@
     <Lib>
       <SubSystem>Windows</SubSystem>
     </Lib>
+    <PreBuildEvent>
+      <Command> </Command>
+    </PreBuildEvent>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='StaticDebug|ARM64'">
     <Midl />
@@ -494,6 +500,9 @@
     <Lib>
       <SubSystem>Windows</SubSystem>
     </Lib>
+    <PreBuildEvent>
+      <Command> </Command>
+    </PreBuildEvent>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='ASanStaticDebug|x64'">
     <Midl>
@@ -635,6 +644,9 @@
     <Xdcmake>
       <DocumentLibraryDependencies>false</DocumentLibraryDependencies>
     </Xdcmake>
+    <PreBuildEvent>
+      <Command> </Command>
+    </PreBuildEvent>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
     <Midl>
@@ -738,6 +750,9 @@
     <Xdcmake>
       <DocumentLibraryDependencies>false</DocumentLibraryDependencies>
     </Xdcmake>
+    <PreBuildEvent>
+      <Command> </Command>
+    </PreBuildEvent>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='StaticRelease|ARM64'">
     <Midl />
@@ -771,6 +786,9 @@
     <Xdcmake>
       <DocumentLibraryDependencies>false</DocumentLibraryDependencies>
     </Xdcmake>
+    <PreBuildEvent>
+      <Command> </Command>
+    </PreBuildEvent>
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="internal\dcraw_common.cpp" />
